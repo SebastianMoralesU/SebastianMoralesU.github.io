@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Encriptación U</title>
+</head>
+
+<body>
+    <br>
+    <center>
+        <h1>Registrate</h1>
+    </center>
+
+    <!-- Formulario para ingresar usuario, mensaje y clave -->
+    <form method="POST" class="row g-3 needs-validation" action="/cifrar">
+        <div class="col-md-4">
+            <label for="usuario">Usuario:</label>
+            <input type="text" class="form-control" name="usuario" id="usuario" required><br><br>
+        </div>
+
+        <div class="col-md-4">
+            <label for="clave">Clave (número):</label>
+            <input type="number" class="form-control" name="clave" id="clave" required><br><br>
+        </div>
+
+        <div class="col-md-4">
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" class="form-control" name="mensaje" id="mensaje" required><br><br>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+
+
+
+    </form>
+    <br><br>
+    <!-- Mostrar resultados -->
+    {% if texto_cifrado %}
+
+    <center><h2>Encriptación:</h2></center>
+    <br>
+
+    <table class="table">
+
+        <tbody>
+
+            <tr>
+                <th td class="table-primary" scope="row">Usuario Descifrado:</th>
+                <td td class="table-primary">{{ usuario_descifrado }}</td>
+                <th td class="table-primary" scope="row">Usuario Cifrado:</th>
+                <td td class="table-primary">{{ usuario_cifrado }}</td>
+            </tr>
+
+            <tr>
+                <th class="table-secondary" scope="row">Clave Descifrada:</th>
+                <td class="table-secondary">{{ clave_descifrada }}</td>
+                <th class="table-secondary" scope="row">Clave Cifrada:</th>
+                <td class="table-secondary">{{ clave_cifrada }}</td>
+            </tr>
+
+            <tr></tr>
+            <th class="table-success" scope="row">Mensaje Descifrado:</th>
+            <td class="table-success">{{ texto_descifrado }}</td>
+            <th class="table-success" scope="row">Mensaje Cifrado:</th>
+            <td class="table-success">{{ texto_cifrado }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>Swal.fire({
+            title: "¡Te haz registrado!",
+            text: "Se veran tus datos encriptados y desencriptados.",
+            icon: "success"
+        });</script>
+</body>
+
+</html>
